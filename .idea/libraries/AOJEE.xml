@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="AOJEE">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/AOJEE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

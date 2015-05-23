@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AOAndroid.iml" filepath="$PROJECT_DIR$/AOAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/AOJEE/AOJEE.iml" filepath="$PROJECT_DIR$/libs/AOJEE/AOJEE.iml" />
     </modules>
   </component>
 </project>
