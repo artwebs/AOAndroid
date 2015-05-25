@@ -16,6 +16,5 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="android-support-v13" level="project" />
-    <orderEntry type="library" name="AOJEE" level="project" />
   </component>
 </module>
