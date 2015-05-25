@@ -12,8 +12,11 @@ import getopt
 proName=""
 package=""
 sDirs=[]
-oDirs=['cn','artwebs']
-template="artwebsandroid"
+oDirs=['cn','artobj','aoandroid']
+template="AOAndroid"
+filterFile=['tools.py','vcs.xml']
+filterDir=['AOJEE','.git','.idea','gen','out','artifacts']
+filterText=[]
 
 def usage():
     print 'tools.py usage:'
@@ -29,40 +32,24 @@ def version(args):
 def output(args):
     print 'Hello, %s'%args
 
-def new(opts):
-    source=os.path.abspath(template)
-    target=os.path.abspath('./')
-    for o, a in opts:
-        if o in ('-h', '--help'):
-            usage()
-            sys.exit(1)
-        elif o in ('-p'):
-            package=a
-            print package
-
-        sDirs.extend(package.split('.'))
-        proName=sDirs[1]
-        sDirs[1]=sDirs[1].lower()
-        target+="/"+proName
-
-
+def new():
+    source=os.path.abspath('../'+template)
+    target=os.path.abspath('../')
+    print '新项目的包名，如cn.artobj.Test'
+    package=raw_input("package:")
+    sDirs.extend(package.split('.'))
+    proName=sDirs[2]
+    sDirs[2]=sDirs[2].lower()
+    target+="/"+proName
     if os.path.exists(target):
         print u"项目已经存在,不需要进行创建"
         exit(0)
     copyFiles(source, target,proName,template)
-    # shutil.copytree(source, target)
-    # copyFiles(source, target)
-    shutil.rmtree(target+"/.git")
-    #shutil.rmtree(target+"/gen")
-    # shutil.copytree(target+"/src/net/zcline/zctechdemo", target+"/src/net/zcline/"+proName.lower())
-    # shutil.rmtree(target+"/src/net/zcline/zctechdemo")
     print 'create '+proName +" sucessed!"
 
 def main(argv):
     try:
-        action=argv[1]
-        opts, args = getopt.getopt(argv[2:], 'hvop:', ['source=', 'target='])
-        obj= globals()[action](opts)
+        new()
 
     except getopt.GetoptError, err:
         print str(err)
@@ -74,6 +61,8 @@ def copyFiles(sourceDir, targetDir,keyword,template):
     global copyFileCounts
     # print sourceDir
     for f in os.listdir(sourceDir):
+        if f in filterFile or f in filterDir:
+            continue ;
         sourceF = os.path.join(sourceDir, f)
         targetF=None
         for index,val in enumerate(oDirs):
@@ -106,6 +95,12 @@ def copyFiles(sourceDir, targetDir,keyword,template):
 
         if os.path.isdir(sourceF):
             copyFiles(sourceF, targetF,keyword,template)
+
+def isExistKeyWords(s):
+    for word in filterText:
+        if s.find(word):
+            return True;
+    return False;
 
 if __name__ == '__main__':
     main(sys.argv)
