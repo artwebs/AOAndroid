@@ -67,12 +67,9 @@ def copyFiles(sourceDir, targetDir,keyword,template):
         targetF=None
         for index,val in enumerate(oDirs):
             if f==val:
-                #print sDirs
-                #print index
                 targetF=os.path.join(targetDir,sDirs[index])
         if targetF is None:
             targetF = os.path.join(targetDir, f.replace(template,keyword).replace(template.lower(),keyword.lower()))
-        #targetF = os.path.join(targetDir, f.replace(template,keyword).replace(template.lower(),keyword.lower()))
 
         if os.path.isfile(sourceF):
             #创建目录
@@ -89,8 +86,7 @@ def copyFiles(sourceDir, targetDir,keyword,template):
                 for line in lines:
                     fto.write(line.replace('.'.join(oDirs),'.'.join(sDirs)).replace(template,keyword).replace(template.lower(),keyword.lower()))
                 fto.close()
-                # print u"%s %s 初始化完成" %(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())), targetF)
-            else:   # ~# k1 b! N) [% u
+            else:
                 print u"%s %s 已存在，初始化完成" %(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())), targetF)
 
         if os.path.isdir(sourceF):
