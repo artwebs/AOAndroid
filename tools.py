@@ -14,7 +14,7 @@ package=""
 sDirs=[]
 oDirs=['cn','artobj','aoandroid']
 template="AOAndroid"
-filterPath=['tools.py','vcs.xml','AOAndroid/.git','.idea','gen','out','artifacts']
+filterNoPath=['tools.py','vcs.xml','AOJEE','.git','.idea','gen','out','artifacts']
 filterText=[]
 
 def usage():
@@ -62,7 +62,7 @@ def copyFiles(sourceDir, targetDir,keyword,template):
     for f in os.listdir(sourceDir):
         # if f in filterFile or f in filterDir:
         #     continue ;
-        if isExistPathFilter(str(sourceDir)):
+        if isExistPathFilter(f):
             continue;
         sourceF = os.path.join(sourceDir, f)
         targetF=None
@@ -94,9 +94,8 @@ def copyFiles(sourceDir, targetDir,keyword,template):
             copyFiles(sourceF, targetF,keyword,template)
 
 def isExistPathFilter(s):
-    for p in filterPath:
-        if s.find(p)>0:
-            return True;
+    if s in filterNoPath:
+        return True;
     return False;
 
 def isExistKeyWords(s):
