@@ -14,8 +14,6 @@ package=""
 sDirs=[]
 oDirs=['cn','artobj','aoandroid']
 template="AOAndroid"
-filterFile=['tools.py','vcs.xml']
-filterDir=['AOJEE','.git','.idea','gen','out','artifacts']
 filterPath=['tools.py','vcs.xml','AOAndroid/.git','.idea','gen','out','artifacts']
 filterText=[]
 
