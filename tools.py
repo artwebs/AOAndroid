@@ -14,7 +14,7 @@ package=""
 sDirs=[]
 oDirs=['cn','artobj','aoandroid']
 template="AOAndroid"
-filterNoPath=['tools.py','vcs.xml','AOJEE','.git','.idea','gen','out','artifacts']
+filterNoPath=['tools.py','vcs.xml','AOAndroid/.git/','.idea/','gen/','out/','artifacts/']
 filterText=[]
 
 def usage():
@@ -62,8 +62,7 @@ def copyFiles(sourceDir, targetDir,keyword,template):
     for f in os.listdir(sourceDir):
         # if f in filterFile or f in filterDir:
         #     continue ;
-        if isExistPathFilter(f):
-            continue;
+
         sourceF = os.path.join(sourceDir, f)
         targetF=None
         for index,val in enumerate(oDirs):
@@ -73,6 +72,8 @@ def copyFiles(sourceDir, targetDir,keyword,template):
             targetF = os.path.join(targetDir, f.replace(template,keyword).replace(template.lower(),keyword.lower()))
 
         if os.path.isfile(sourceF):
+            if isExistPathFilter(f):
+                continue;
             #创建目录
             if not os.path.exists(targetDir):
                 os.makedirs(targetDir)
@@ -91,6 +92,8 @@ def copyFiles(sourceDir, targetDir,keyword,template):
                 print u"%s %s 已存在，初始化完成" %(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())), targetF)
 
         if os.path.isdir(sourceF):
+            if isExistPathFilter(f+"/"):
+                continue;
             copyFiles(sourceF, targetF,keyword,template)
 
 def isExistPathFilter(s):
