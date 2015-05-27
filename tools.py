@@ -14,7 +14,7 @@ package=""
 sDirs=[]
 oDirs=['cn','artobj','aoandroid']
 template="AOAndroid"
-filterNoPath=['tools.py','vcs.xml','AOAndroid/.git/','.idea/','gen/','out/','artifacts/']
+filterNoPath=['tools.py','vcs.xml','AOAndroid.iml','AOAndroid/.git/','.idea/','gen/','out/','artifacts/']
 filterText=[]
 
 def usage():
