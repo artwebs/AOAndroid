@@ -1,6 +1,6 @@
 package cn.artobj.aoandroid;
 
-import cn.artobj.android.application.AppDefault;
+import cn.artobj.android.app.AppDefault;
 import cn.artobj.android.data.DataBase;
 
 /**

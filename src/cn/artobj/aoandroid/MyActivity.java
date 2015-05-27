@@ -3,7 +3,7 @@ package cn.artobj.aoandroid;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
-import cn.artobj.android.application.AlertStyle;
+import cn.artobj.android.app.AlertStyle;
 
 public class MyActivity extends Activity {
     /**
