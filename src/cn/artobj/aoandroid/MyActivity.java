@@ -13,7 +13,7 @@ public class MyActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
+        int id=R.drawable.info;
         new AlertDialog.Builder(this)
                 .setIcon(AlertStyle.info.getIco())
                 .setTitle(AlertStyle.info.getTitle())
